@@ -1,0 +1,102 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.justfordemo{
+  color: greenyellow;
+}
+
+
+.nav-item:hover{
+
+  background:#2980b9;
+ display: block;
+
+}
+
+
+
+.section{
+  
+  background-color: #eee;
+}
+.card{
+  border-radius:50px;
+  align-items: center;
+  justify-content: center;
+
+}
+.textsignup{
+  text-decoration:underline;
+  justify-self: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: large;
+  align-self: center;
+  margin-left: 40%;
+ 
+}
+.figure{
+  justify-content: center;
+  align-items: center;
+  margin-top: 20%;
+
+}
+.logimg{
+  margin-top:0%;
+}
+.textlog{
+  text-decoration:underline;
+  justify-self: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: large;
+  align-self: center;
+  margin-left: 40%;
+  margin-top: 2%;
+ 
+}
+
+.contact-info{
+  border:2px solid gray;
+  width: 30%;
+}
+
+.home-page{
+  text-align: center;
+ 
+}
