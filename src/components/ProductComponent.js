@@ -38,25 +38,27 @@ const ProductComponent = () => {
 
         const {id,title,price,category,image}=product;
         return(
-           
-            <Link to={`/product/${id}`}>
-            <Card key={id} style={{ width: '15rem',margin:'1vmax'}} className="productsCards">
-                <Container>
+        
+            <Card key={id} style={{ width: '15rem',margin:'1vmax',padding:"1vmax"}} className="productsCards">
+              <Link to={`/product/${id}`}>
+
+              <Container>
                 <Card.Img variant="top" src={image} width='100%' height="200vmax"/>
             <Card.Body>
-              <Card.Title>{title}</Card.Title>
-              <Card.Text>
+              <Card.Title style={{textDecoration:'none',color:'black'}}>{title}</Card.Title>
+              <Card.Text style={{textDecoration:'none',color:'black'}}>
                 <strong> {price}</strong>
          
               </Card.Text>
-              <Card.Text>
+              <Card.Text style={{textDecoration:'none',color:'black'}}>
                 {category}
               </Card.Text>
             </Card.Body>
                 </Container>
+              </Link>
            
           </Card>
-          </Link>
+          
           
         )
     })
