@@ -1,23 +1,74 @@
-import React from 'react'
-import { Button, Card, CardImg } from 'react-bootstrap'
-import { useSelector } from 'react-redux'
+import axios from 'axios';
+import React, { useEffect } from 'react'
+import { Card, Col, Container, Row } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom';
+
+//import action creator
+import { setProducts } from '../Redux/Actions/productActions';
+
+
+
 
 const ProductComponent = () => {
+    
+    //import dispatchor
+    const dispatch = useDispatch()
+
+   
+
+    useEffect(()=>{
+
+        const fetchProducts=async()=>{
+
+            const response =await axios.get('https://fakestoreapi.com/products').catch(err=>{
+                console.log('Err', err)
+            })
+            dispatch(setProducts(response.data))
+        }
+        
+        fetchProducts()
+     },[dispatch])
+
+
+     //get data from store
     const products = useSelector(state=>state.allProducts.products)
     console.log(products)
+    const productList = products.map(product=>{
+
+        const {id,title,price,category,image}=product;
+        return(
+           
+            <Link to={`/product/${id}`}>
+            <Card key={id} style={{ width: '15rem',margin:'1vmax'}} className="productsCards">
+                <Container>
+                <Card.Img variant="top" src={image} width='100%' height="200vmax"/>
+            <Card.Body>
+              <Card.Title>{title}</Card.Title>
+              <Card.Text>
+                <strong> {price}</strong>
+         
+              </Card.Text>
+              <Card.Text>
+                {category}
+              </Card.Text>
+            </Card.Body>
+                </Container>
+           
+          </Card>
+          </Link>
+          
+        )
+    })
   return (
     <>
-      <Card style={{ width: '18rem',margin:'1vmax'}}>
-      <Card.Img variant="top" src="" />
-      <Card.Body>
-        <Card.Title>{products[0].title}</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
-      </Card.Body>
-    </Card>
+    <Row>
+        <Col className='ProductList col-lg-12 col-md-12 col-sm-12'>
+        {productList}
+        
+        </Col>
+    </Row>
+   
     </>
   )
 }

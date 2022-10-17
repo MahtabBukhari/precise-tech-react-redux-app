@@ -1,0 +1,21 @@
+.ProductList{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    min-height: 25vh;
+    background-color: antiquewhite;
+    
+}
+
+.productsCards{
+    box-shadow: 5px 5px 10px gray;
+    padding: 2px 5px;
+    transition: all 0.5s;  
+
+}
+
+.productsCards:hover{
+transform: translate(0,-1vmax);
+box-shadow: 10px 10px 10px gray;
+}
+
