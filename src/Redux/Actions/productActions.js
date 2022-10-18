@@ -15,12 +15,7 @@ export const selectedProduct=(product)=>{
     }
 }
 
-export const updateSelectedProduct=(product)=>{
-    return{
-        type:ActionTypes.UPDATE_SELECTED_PRODUCT,
-        payload:product
-    }
-}
+
 export const removeSelectedProduct=()=>{
     return{
         type:ActionTypes.REMOVE_SELECTED_PRODUCT,
