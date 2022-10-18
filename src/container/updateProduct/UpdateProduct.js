@@ -1,29 +1,78 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Button, Col, Container, Form, Row } from 'react-bootstrap'
-import { useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate, useParams } from 'react-router-dom'
+import { updatedProduct } from '../../Redux/Actions/productActions'
 import './updateProduct.css'
 
 const UpdateProduct = () => {
+
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
 
    
     
     const Products = useSelector(state=>state.allProducts.products)
     console.log(Products)
     const { id } = useParams();
-    console.log(id)
+    // console.log(id)
     const product = Products.find((p) => Number(p.id )=== Number(id));
-    console.log(product)
+    // console.log(product)
 
     const {title,price,description,category}=product
-    console.log(title)
+    // console.log(title)
 
     const [ptitle,setPtitle]=useState(title)
     const [pprice,setPprice]=useState(price)
     const [pdescription,setPdescription]=useState(description)
     const [pcategory,setPcategory]=useState(category.name)
-    const [pimage,setPimage]=useState()
+    // const [pimage,setPimage]=useState()
+
+    // console.log(pimage)
+
+const handleSubmit=(e)=>{
+
+    e.preventDefault()
+
+    const putProduct=async()=>{
+
+        await axios.put(`https://api.escuelajs.co/api/v1/products/${id}`,{
+            "title":ptitle,
+           "price":pprice,
+           "description":pdescription,
+           "category":{
+            "name":pcategory,
+           
+           }
+
+
+        }).catch(err=>console.log(err))
+
+        const data ={
+            id,
+            title:ptitle,
+           price:pprice,
+           description:pdescription,
+           category:{
+            name:pcategory,
+            image:'https://cdn.lorem.space/images/game/.cache/640x480/enter-the-gungeon.jpg'
+           }}
+
+
+           dispatch(updatedProduct(data))
+
+
+
+    }
+
+    putProduct()
+
+    navigate(`/product/${id}`)
+
+}
+
+
   
 
   return (
@@ -52,13 +101,13 @@ const UpdateProduct = () => {
         <Form.Label>Category</Form.Label>
         <Form.Control type="text" placeholder="product category" onChange={(e)=>{setPcategory(e.target.value)}} value={pcategory} />
       </Form.Group>
-
+{/* 
       <Form.Group className="mb-3" controlId="formBasicImage">
         <Form.Label>Image</Form.Label>
         <Form.Control type="file" placeholder="upload image" onChange={(e)=>{setPimage(e.target.files[0])}}  />
       </Form.Group>
-      
-      <Button variant="primary" style={{backgroundColor:"purple",outline:"none",border:"none"}}  type="submit">
+       */}
+      <Button variant="primary" style={{backgroundColor:"purple",outline:"none",border:"none"}} onClick={handleSubmit}  type="submit">
         update
       </Button>
     </Form>

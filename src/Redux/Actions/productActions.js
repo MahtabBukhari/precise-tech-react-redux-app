@@ -1,3 +1,4 @@
+
 import {ActionTypes} from '../constantsType';
 
 export const setProducts=(products)=>{
@@ -27,5 +28,12 @@ export const DeleteSelectedProduct=(id)=>{
         type:ActionTypes.DELETE_SELECTED_PRODUCT,
         payload:id
       
+    }
+}
+
+export const updatedProduct=(data)=>{
+    return{
+        type:ActionTypes.UPDATED_PRODUCT,
+        payload:data
     }
 }
