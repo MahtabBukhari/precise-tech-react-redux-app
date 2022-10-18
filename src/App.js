@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import Products from "./container/productsPage";
 import { Container } from "react-bootstrap";
 import ProductDetail from "./container/ProductDetail.js";
+import UpdateProduct from "./container/updateProduct/UpdateProduct";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Routes>
           <Route exact path="/" element={<Products />} />
           <Route exact path="/product/:id" element={<ProductDetail/>}/>
+          <Route  exact path="/product/update" element={<UpdateProduct/>} />
         </Routes>
       </Container>
     </>

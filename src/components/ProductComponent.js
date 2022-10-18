@@ -21,7 +21,7 @@ const ProductComponent = () => {
 
         const fetchProducts=async()=>{
 
-            const response =await axios.get('https://fakestoreapi.com/products').catch(err=>{
+            const response =await axios.get('https://api.escuelajs.co/api/v1/products').catch(err=>{
                 console.log('Err', err)
             })
             dispatch(setProducts(response.data))
@@ -36,22 +36,22 @@ const ProductComponent = () => {
     console.log(products)
     const productList = products.map(product=>{
 
-        const {id,title,price,category,image}=product;
+        const {id,title,price,category}=product;
         return(
         
             <Card key={id} style={{ width: '15rem',margin:'1vmax',padding:"1vmax"}} className="productsCards">
               <Link to={`/product/${id}`}>
 
               <Container>
-                <Card.Img variant="top" src={image} width='100%' height="200vmax"/>
+                <Card.Img variant="top" src={category.image} width='100%' height="200vmax"/>
             <Card.Body>
               <Card.Title style={{textDecoration:'none',color:'black'}}>{title}</Card.Title>
               <Card.Text style={{textDecoration:'none',color:'black'}}>
-                <strong> {price}</strong>
+                <strong>${price}</strong>
          
               </Card.Text>
               <Card.Text style={{textDecoration:'none',color:'black'}}>
-                {category}
+                {category.name}
               </Card.Text>
             </Card.Body>
                 </Container>
