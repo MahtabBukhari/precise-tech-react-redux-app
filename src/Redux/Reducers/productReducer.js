@@ -32,3 +32,13 @@ export const selectedProductReducer =(state={},{type,payload})=>{
             return state;
     }
 }
+export const updateSelectedProductReducer =(state={},{type,payload})=>{
+    switch(type){
+        case ActionTypes.UPDATE_SELECTED_PRODUCT:
+            return {...state,...payload}
+        case ActionTypes.REMOVE_SELECTED_PRODUCT:
+            return {}
+        default:
+            return state;
+    }
+}

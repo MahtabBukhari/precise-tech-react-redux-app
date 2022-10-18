@@ -56,9 +56,9 @@ const ProductDetail = () => {
        
        }
 
-       const onEdit=()=>{
+       const onEdit=(id)=>{
 
-        navigate('/product/update')
+        navigate(`/product/update/${id}`)
 
        }
 
